@@ -13,10 +13,7 @@ function renderLayout($title, $content, $activePage = '') {
     if (isset($_SESSION['user_id']) && !$isAuthPage) {
         $menuItems = [
             ['href' => 'index.php', 'icon' => 'home', 'label' => 'Dashboard'],
-            ['href' => 'deudas.php', 'icon' => 'credit-card', 'label' => 'Deudas'],
-            ['href' => 'gastos-fijos.php', 'icon' => 'wrench', 'label' => 'Gastos Fijos'],
-            ['href' => 'control-diario.php', 'icon' => 'calendar', 'label' => 'Control Diario'],
-            ['href' => 'ahorros.php', 'icon' => 'piggy-bank', 'label' => 'Ahorros']
+            ['href' => 'deudas.php', 'icon' => 'credit-card', 'label' => 'Deudas']
         ];
         $authItems = [
             ['href' => 'logout.php', 'icon' => 'sign-out-alt', 'label' => 'Cerrar Sesión']

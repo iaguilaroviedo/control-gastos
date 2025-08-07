@@ -1,9 +1,8 @@
 <?php
-// login.php - Inicio de Sesión
+// login.php
 session_start();
 require_once 'config/auth.php';
 
-// Si ya está logueado, redirige al dashboard
 if (isLoggedIn()) {
     header("Location: index.php");
     exit;
@@ -30,11 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión - Control de Gastos</title>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Estilos personalizados -->
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -90,7 +86,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             font-size: 16px;
             font-weight: 500;
             cursor: pointer;
-            transition: background-color 0.3s;
         }
         .btn:hover {
             background-color: #2C6C2D;
@@ -113,9 +108,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             color: #2E7D32;
             text-decoration: none;
             font-weight: 500;
-        }
-        .register-link a:hover {
-            text-decoration: underline;
         }
     </style>
 </head>

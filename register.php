@@ -1,10 +1,9 @@
 <?php
-// register.php - Registro de Usuario
+// register.php
 session_start();
 require_once 'config/auth.php';
 
-// Si ya está logueado, redirige al dashboard
-if (isset($_SESSION['user_id'])) {
+if (isLoggedIn()) {
     header("Location: index.php");
     exit;
 }
@@ -19,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'] ?? '';
     $confirm_password = $_POST['confirm_password'] ?? '';
 
-    // Validaciones
     if (empty($nombre_completo) || empty($email) || empty($username)) {
         $error = 'Todos los campos son obligatorios.';
     } elseif ($password !== $confirm_password) {
@@ -27,11 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (strlen($password) < 6) {
         $error = 'La contraseña debe tener al menos 6 caracteres.';
     } else {
-        // Registrar el usuario
         if (register($nombre_completo, $email, $username, $password)) {
             $success = 'Registro exitoso. Ahora puedes iniciar sesión.';
-            // Opcional: redirigir automáticamente después de 2 segundos
-            // header("Refresh: 2; url=login.php");
         } else {
             $error = 'El usuario o correo ya existe.';
         }
@@ -45,11 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrarse - Control de Gastos</title>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Estilos personalizados -->
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -105,7 +97,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             font-size: 16px;
             font-weight: 500;
             cursor: pointer;
-            transition: background-color 0.3s;
         }
         .btn:hover {
             background-color: #2C6C2D;
@@ -136,9 +127,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             text-decoration: none;
             font-weight: 500;
         }
-        .login-link a:hover {
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
@@ -146,41 +134,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h2><i class="fas fa-user-plus"></i> Crear Cuenta</h2>
 
         <?php if ($error): ?>
-            <div class="alert alert-danger">
-                <?= htmlspecialchars($error) ?>
-            </div>
+            <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
         <?php endif; ?>
 
         <?php if ($success): ?>
-            <div class="alert alert-success">
-                <?= htmlspecialchars($success) ?>
-            </div>
+            <div class="alert alert-success"><?= htmlspecialchars($success) ?></div>
         <?php endif; ?>
 
         <form method="POST">
             <div class="form-group">
-                <label for="nombre_completo">Nombre Completo</label>
-                <input type="text" name="nombre_completo" id="nombre_completo" class="form-control" value="<?= htmlspecialchars($_POST['nombre_completo'] ?? '') ?>" required>
+                <label>Nombre Completo</label>
+                <input type="text" name="nombre_completo" class="form-control" value="<?= htmlspecialchars($_POST['nombre_completo'] ?? '') ?>" required>
             </div>
             <div class="form-group">
-                <label for="email">Correo Electrónico</label>
-                <input type="email" name="email" id="email" class="form-control" value="<?= htmlspecialchars($_POST['email'] ?? '') ?>" required>
+                <label>Correo Electrónico</label>
+                <input type="email" name="email" class="form-control" value="<?= htmlspecialchars($_POST['email'] ?? '') ?>" required>
             </div>
             <div class="form-group">
-                <label for="username">Nombre de Usuario</label>
-                <input type="text" name="username" id="username" class="form-control" value="<?= htmlspecialchars($_POST['username'] ?? '') ?>" required>
+                <label>Nombre de Usuario</label>
+                <input type="text" name="username" class="form-control" value="<?= htmlspecialchars($_POST['username'] ?? '') ?>" required>
             </div>
             <div class="form-group">
-                <label for="password">Contraseña</label>
-                <input type="password" name="password" id="password" class="form-control" required>
+                <label>Contraseña</label>
+                <input type="password" name="password" class="form-control" required>
             </div>
             <div class="form-group">
-                <label for="confirm_password">Confirmar Contraseña</label>
-                <input type="password" name="confirm_password" id="confirm_password" class="form-control" required>
+                <label>Confirmar Contraseña</label>
+                <input type="password" name="confirm_password" class="form-control" required>
             </div>
-            <button type="submit" class="btn">
-                <i class="fas fa-user-check"></i> Registrarse
-            </button>
+            <button type="submit" class="btn">Registrarse</button>
         </form>
 
         <div class="login-link">

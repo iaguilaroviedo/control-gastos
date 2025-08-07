@@ -233,16 +233,20 @@ try {
         <i class="fas fa-bars"></i>
     </div>
     <!-- Popup del Menú -->
-    <div class="menu-popup" id="menuPopup">
-        <div class="menu-content">
-            <span class="close-btn" id="closeBtn">&times;</span>
-            <h3>Menú</h3>
-            <ul>
-                <li><a href="index.php"><i class="fas fa-home"></i> Dashboard</a></li>
-                <li><a href="deudas.php"><i class="fas fa-credit-card"></i> Gestionar Deudas</a></li>
-            </ul>
-        </div>
+<div class="menu-popup" id="menuPopup">
+    <div class="menu-content">
+        <span class="close-btn" id="closeBtn">&times;</span>
+        <h3>Menú</h3>
+        <ul>
+            <li><a href="index.php"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="deudas.php"><i class="fas fa-credit-card"></i> Gestionar Deudas</a></li>
+            <li><a href="gastos-fijos.php"><i class="fas fa-wrench"></i> Gastos Fijos</a></li>
+            <li><a href="control-diario.php"><i class="fas fa-calendar"></i> Control Diario</a></li>
+            <li><a href="ahorros.php"><i class="fas fa-piggy-bank"></i> Ahorros</a></li>
+            <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
+        </ul>
     </div>
+</div>
     <!-- Fondo oscuro al abrir el menú -->
     <div class="menu-overlay" id="menuOverlay"></div>
     <!-- Contenido principal -->
