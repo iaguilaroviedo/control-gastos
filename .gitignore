@@ -1,0 +1,11 @@
+# Archivos temporales
+*.log
+*.tmp
+
+# Configuraciones locales (si tienes)
+.env
+config/database.php
+
+# Carpetas del sistema
+Thumbs.db
+.DS_Store
