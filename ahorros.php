@@ -263,6 +263,7 @@ $total_ahorrado = array_sum(array_column($ahorros, 'monto'));
                 <li><a href="gastos-fijos.php"><i class="fas fa-wrench"></i> Gastos Fijos</a></li>
                 <li><a href="control-diario.php"><i class="fas fa-calendar"></i> Control Diario</a></li>
                 <li><a href="ahorros.php" class="active"><i class="fas fa-piggy-bank"></i> Ahorros</a></li>
+                <li><a href="perfil.php" class="active"><i class="fas fa-user"></i> Perfil</a></li>
                 <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
             </ul>
         </div>

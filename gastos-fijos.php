@@ -240,6 +240,7 @@ $gastos = $stmt->fetchAll();
                 <li><a href="deudas.php"><i class="fas fa-credit-card"></i> Gestionar Deudas</a></li>
                 <li><a href="gastos-fijos.php" class="active"><i class="fas fa-wrench"></i> Gastos Fijos</a></li>
                 <li><a href="control-diario.php"><i class="fas fa-calendar"></i> Control Diario</a></li>
+                <li><a href="perfil.php"><i class="fas fa-user"></i> Perfil</a></li>
                 <li><a href="ahorros.php"><i class="fas fa-piggy-bank"></i> Ahorros</a></li>
             </ul>
         </div>
